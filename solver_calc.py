@@ -1,4 +1,5 @@
 """solver class"""
+
 from words import words_list
 
 def in_yellow(let, i, word):
