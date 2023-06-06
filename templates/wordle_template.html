@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter Input</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Letter Input</h1>
+    <div class="letter-input">
+      <input type="text" class="letter-field" maxlength="1">
+      <input type="text" class="letter-field" maxlength="1">
+      <input type="text" class="letter-field" maxlength="1">
+      <input type="text" class="letter-field" maxlength="1">
+      <input type="text" class="letter-field" maxlength="1">
+    </div>
+    <div class="letter-boxes">
+      <div class="letter-box"></div>
+      <div class="letter-box"></div>
+      <div class="letter-box"></div>
+      <div class="letter-box"></div>
+      <div class="letter-box"></div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
