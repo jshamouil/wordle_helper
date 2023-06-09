@@ -9,21 +9,36 @@
 <body>
   <div class="container">
     <h1 class="title">Letter Input</h1>
-    <div class="letter-input">
-      <input type="text" class="letter-field" maxlength="1">
-      <input type="text" class="letter-field" maxlength="1">
-      <input type="text" class="letter-field" maxlength="1">
-      <input type="text" class="letter-field" maxlength="1">
-      <input type="text" class="letter-field" maxlength="1">
-    </div>
-    <div class="letter-boxes">
-      <div class="letter-box"></div>
-      <div class="letter-box"></div>
-      <div class="letter-box"></div>
-      <div class="letter-box"></div>
-      <div class="letter-box"></div>
-    </div>
+    <form action="{{ url_for('submit_letters') }}" method="POST">
+      <div class="letter-input">
+        <input type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input type="text" name="letter[]" class="letter-field" maxlength="1">
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
   </div>
+  <table class="results-table">
+      <thead>
+        <tr>
+          <th>Guess</th>
+          <th>Index</th>
+          <th>Recommended Guesses</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+          <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date_created}}</td>
+            <td>{{ task.recomends }}</td>
+
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
