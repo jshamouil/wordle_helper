@@ -1,4 +1,9 @@
 const letterFields = document.querySelectorAll('.letter-field');
+const resultsTableBody = document.querySelector('.results-table tbody');
+const clearButton = document.querySelector('.clear-button');
+const colorInputs = document.querySelectorAll('.color-field');
+let colorData = []; // Array to store color data
+
 
 // Event listener for input fields
 letterFields.forEach((field, index) => {
@@ -20,6 +25,15 @@ letterFields.forEach((field, index) => {
     const nextColor = colors[(colors.indexOf(currentColor) + 1) % colors.length];
     e.target.dataset.color = nextColor;
     e.target.style.backgroundColor = nextColor;
+    const color = e.target.dataset.color;
+    if (color) {
+      e.target.classList.toggle(color);
+      colorInputs[index].value = e.target.classList.contains(color) ? color : '';
+    }
+    console.log(e.target.id.concat("-color"))
+    const colorBox = e.target.id.concat("-color")
+    document.getElementById(colorBox).value = nextColor;
   });
+
 
 });

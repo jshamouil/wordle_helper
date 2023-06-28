@@ -3,21 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Letter Input</title>
+  <title>Wordle Helper</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 </head>
 <body>
   <div class="container">
-    <h1 class="title">Letter Input</h1>
+    <h1 class="title">Wordle Helper</h1>
     <form action="{{ url_for('submit_letters') }}" method="POST">
       <div class="letter-input">
-        <input type="text" name="letter[]" class="letter-field" maxlength="1">
-        <input type="text" name="letter[]" class="letter-field" maxlength="1">
-        <input type="text" name="letter[]" class="letter-field" maxlength="1">
-        <input type="text" name="letter[]" class="letter-field" maxlength="1">
-        <input type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input id="input-box-1" type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input id="input-box-1-color" type="hidden" name="color[]" class="color-field" value="grey">
+        <input id="input-box-2" type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input id="input-box-2-color" type="hidden" name="color[]" class="color-field" value="grey">
+        <input id="input-box-3" type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input id="input-box-3-color" type="hidden" name="color[]" class="color-field" value="grey">
+        <input id="input-box-4" type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input id="input-box-4-color" type="hidden" name="color[]" class="color-field" value="grey">
+        <input id="input-box-5" type="text" name="letter[]" class="letter-field" maxlength="1">
+        <input id="input-box-5-color" type="hidden" name="color[]" class="color-field" value="grey">
       </div>
       <button type="submit" class="submit-button">Submit</button>
+    </form>
+    <form method="POST" action="/clear/">
+      <button type="submit" class="clear-button">Clear</button>
     </form>
   </div>
   <table class="results-table">
