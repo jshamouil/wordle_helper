@@ -19,6 +19,12 @@ def calc(guess, output, words=None):
             yellow.append((let, ind))
         if out[ind] == 1:
             green.append((let, ind))
+    for let, i in yellow:
+        if let in gray:
+            gray.remove(let)
+    # print(gray)
+    # print(yellow)
+    # print(green)
     for word in words:
         out_words.update({word for i in gray if i in word})
         out_words.update({word for let, i in yellow if in_yellow(let, i, word)})
@@ -26,3 +32,7 @@ def calc(guess, output, words=None):
             in_words.add(word)
     words = (words.difference(out_words)).intersection(in_words)
     return words
+
+# lw = {'straw', 'strap', 'stray'}
+# test = calc("stray", "1,1,1,1,3", lw)
+# print(test)

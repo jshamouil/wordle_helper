@@ -53,13 +53,13 @@ def submit_letters():
         if is_empty:
             remaining_words = calc(guess.lower(), color_out)
         else:
-            print(Todo.query.order_by(Todo.id.desc()).first().recomends)
             last_words = Todo.query.order_by(Todo.id.desc()).first().recomends.split(",")
             print(last_words)
             print(type(last_words))
-            remaining_words = calc(guess.lower(), color_out, last_words)
-        top_ten = ranker(list(remaining_words))
-
+            print(guess.lower())
+            print(color_out)
+            remaining_words = calc(guess.lower(), color_out, set(last_words))
+        top_ten = ", ".join(list(remaining_words))
 
 
         new_task = Todo(content=guess, date_created=color_out[:-1], recomends=top_ten)
