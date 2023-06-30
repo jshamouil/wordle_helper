@@ -54,15 +54,8 @@ def submit_letters():
             remaining_words = calc(guess.lower(), color_out)
         else:
             last_words = Todo.query.order_by(Todo.id.desc()).first().recomends.split(", ")
-            print(last_words)
-            print(type(last_words))
-            print(guess.lower())
-            print(color_out)
             remaining_words = calc(guess.lower(), color_out, set(last_words))
-        top_ten = ", ".join(list(remaining_words))
-        print(top_ten)
-
-
+        top_ten = ranker(list(remaining_words))
         new_task = Todo(content=guess, date_created=color_out, recomends=top_ten)
         try:
             db.session.add(new_task)
